@@ -10,7 +10,7 @@
             text-align: center;
             font-family: 'Pacifico', cursive;
             margin-top: 100px;
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://source.unsplash.com/1600x900/?love,romantic') no-repeat center center fixed; background-color: #ff6699;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://your-image-url.com') no-repeat center center fixed; 
             background-size: cover;
             color: white;
             height: 100vh;
@@ -24,7 +24,8 @@
             padding: 10px 20px;
             border: none;
             cursor: pointer;
-            transition: transform 0.3s;
+            transition: transform 0.3s, left 0.3s, top 0.3s;
+            position: relative;
         }
         #yes {
             background-color: #28a745;
@@ -34,8 +35,13 @@
             background-color: #dc3545;
             color: white;
         }
-        #yes:hover, #no:hover {
+        #yes:hover {
             transform: scale(1.1);
+        }
+        #no:hover {
+            position: absolute;
+            left: calc(50% + (Math.random() * 200px - 100px));
+            top: calc(50% + (Math.random() * 200px - 100px));
         }
     </style>
 </head>
@@ -49,9 +55,11 @@
         let yesButton = document.getElementById("yes");
         let noButton = document.getElementById("no");
 
-        noButton.addEventListener("click", function() {
-            let currentSize = parseInt(window.getComputedStyle(yesButton).fontSize);
-            yesButton.style.fontSize = (currentSize + 5) + "px";
+        noButton.addEventListener("mouseover", function() {
+            let x = Math.random() * (window.innerWidth - 100);
+            let y = Math.random() * (window.innerHeight - 100);
+            noButton.style.left = `${x}px`;
+            noButton.style.top = `${y}px`;
         });
 
         yesButton.addEventListener("click", function() {
@@ -60,12 +68,14 @@
                 spread: 150,
                 origin: { y: 0.6 }
             });
+
+            let gif = document.createElement("img");
+            gif.src = "https://media.giphy.com/media/3ohs7KViFOD0VsqZc0/giphy.gif"; // Cute reaction GIF
+            gif.style.width = "300px";
+            gif.style.marginTop = "20px";
+            document.body.appendChild(gif);
+
             alert("Now I'm yours for life ❤️");
-        });
-    </script>
-<button id="spotify-link" style="display: none;">Listen on Spotify</button>
-    <script>
-        yesButton.addEventListener("click", function() {
             window.open('https://open.spotify.com/track/7wfDCDfhVe2tFxIkQEJp35', '_blank');
         });
     </script>
