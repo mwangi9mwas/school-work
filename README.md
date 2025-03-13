@@ -11,9 +11,7 @@
             text-align: center;
             font-family: 'Pacifico', cursive;
             margin-top: 100px;
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
-                        url('https://source.unsplash.com/1600x900/?silhouette,kissing') no-repeat center center fixed;
-            background-size: cover;
+            background: radial-gradient(circle, #ff0000, #660000);
             color: white;
             height: 100vh;
             display: flex;
@@ -59,7 +57,6 @@
     <button id="yes">Yes</button>
     <button id="no">No</button>
 
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
     <script>
         let yesButton = document.getElementById("yes");
         let noButton = document.getElementById("no");
@@ -83,12 +80,7 @@
         noButton.addEventListener("click", moveNoButton);
 
         yesButton.addEventListener("click", function() {
-            confetti({
-                particleCount: 500,
-                spread: 150,
-                origin: { y: 0.6 }
-            });
-            alert("Now I'm yours for life ❤️");
+            alert("Mwangi says: Now I'm yours for life ❤️");
             window.open('https://open.spotify.com/track/7wfDCDfhVe2tFxIkQEJp35', '_blank');
         });
 
